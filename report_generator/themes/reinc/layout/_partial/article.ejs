@@ -1,34 +1,35 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    <!--  <%- partial('post/date', {class_name: 'article-date', date_format: null}) %> -->
-    <div class="person-name">
-        <%- post.firstname %> <%- post.restofname %>
-    </div>
-
-    <% if (post.factoids && post.factoids.length){ %>
-        <div id="factoids">
-        <% post.factoids.forEach(function(factoid, i){ %>
-            <span class="factoid" id="factoid-<%= i + 1 %>">
-                <%= post.firstname  %> <%= factoid.text  %>.
-                <span class="sup"><a href="#footnote-<%= i + 1  %>"> <%= i + 1 %></a></span>
-            </span>
-        <% }) %>
+    <div class="page">
+        <div class="person-name">
+            <%- post.firstname %> <%- post.restofname %>
         </div>
-    <% } %>
+
+        <% if (post.factoids && post.factoids.length){ %>
+            <div id="factoids">
+            <% post.factoids.forEach(function(factoid, i){ %>
+                <span class="factoid" id="factoid-<%= i + 1 %>">
+                    <%= post.firstname  %> <%= factoid.text  %>.
+                    <span class="sup"><a href="#footnote-<%= i + 1  %>"> <%= i + 1 %></a></span>
+                </span>
+            <% }) %>
+            </div>
+        <% } %>
+    </div>
 
     <% if (post.factoids && post.factoids.length){ %>
         <div id="footnotes">
         <% post.factoids.forEach(function(factoid, i){ %>
-            <div class="footnote" id="footnote-<%= i + 1 %>">
-                <%= i + 1  %>
+            <div class="footnote page" id="footnote-<%= i + 1 %>">
+                <a href="#factoid-<%= i + 1  %>"> <%= i + 1 %></a>.
+                <div class="text"><%= post.firstname  %> <%= factoid.text  %>.</div>
                 <%= factoid.url  %>
+                <div class="img"><img srcset='http://localhost:3000/?url=<%= factoid.url %>&clipRect=%7B"top"%3A0%2C"left"%3A0%2C"width"%3A3000%2C"height"%3A1400%7D 2x' /></div>
                 <br >
             </div>
         <% }) %>
         </div>
     <% } %>
 
-  </div>
 </article>
 
 
