@@ -1,0 +1,7 @@
+<% 
+    page.posts.each(function(post){ %>
+        <div class="person">
+            <a href="<%- url_for(post.path) %>"><%= post.firstname %> <%= post.restofname %></a>
+        </div>
+    <% })
+ %>

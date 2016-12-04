@@ -1,0 +1,35 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    <!--  <%- partial('post/date', {class_name: 'article-date', date_format: null}) %> -->
+    <div class="person-name">
+        <%- post.firstname %> <%- post.restofname %>
+    </div>
+
+    <% if (post.factoids && post.factoids.length){ %>
+        <div id="factoids">
+        <% post.factoids.forEach(function(factoid, i){ %>
+            <span class="factoid" id="factoid-<%= i + 1 %>">
+                <%= post.firstname  %> <%= factoid.text  %>.
+                <span class="sup"><a href="#footnote-<%= i + 1  %>"> <%= i + 1 %></a></span>
+            </span>
+        <% }) %>
+        </div>
+    <% } %>
+
+    <% if (post.factoids && post.factoids.length){ %>
+        <div id="footnotes">
+        <% post.factoids.forEach(function(factoid, i){ %>
+            <div class="footnote" id="footnote-<%= i + 1 %>">
+                <%= i + 1  %>
+                <%= factoid.url  %>
+                <br >
+            </div>
+        <% }) %>
+        </div>
+    <% } %>
+
+  </div>
+</article>
+
+
+
