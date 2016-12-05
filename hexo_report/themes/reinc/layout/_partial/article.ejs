@@ -1,7 +1,7 @@
 <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
     <div class="page">
         <div class="person-name">
-            <%- post.firstname %> <%- post.restofname %>
+            <%= post.firstname %> <%= post.restofname %>
         </div>
 
         <% if (post.factoids && post.factoids.length){ %>
@@ -23,7 +23,11 @@
                 <a href="#factoid-<%= i + 1  %>"> <%= i + 1 %></a>.
                 <div class="text"><%= post.firstname  %> <%= factoid.text  %>.</div>
                 <%= factoid.url  %>
-                <div class="img"><img srcset='http://localhost:3000/?url=<%= factoid.url %>&clipRect=%7B"top"%3A0%2C"left"%3A0%2C"width"%3A3000%2C"height"%3A1400%7D 2x' /></div>
+                <!-- <div class="img"><img srcset='http://localhost:3000/?url=<%= factoid.url %>&clipRect=%7B"top"%3A0%2C"left"%3A0%2C"width"%3A3000%2C"height"%3A1400%7D 2x' /></div> -->
+                <% if(factoid.img) {  %>
+                    <div class="img"><img srcset='<%= factoid.img  %> 2x' /></div>
+                <% } %>
+                
                 <br >
             </div>
         <% }) %>
